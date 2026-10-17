@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>최종가 가격비교 시제품 | 인천 ⇄ 상하이</title>
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3f5f9;--card:#fff;--text:#0f1d33;--sub:#6b7686;--line:#e3e7ee;--pri:#3264ff;--pri-soft:#eaf0ff;
+  --warn:#ff6a00;--warn-soft:#fff1e6;--up:#d93025;--down:#12915a;--new:#7a3cff;--new-soft:#f1eaff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0e131c;--card:#171e2b;--text:#e8edf5;--sub:#93a0b4;--line:#283244;--pri:#6b8cff;--pri-soft:#1c2845;--warn:#ff8a3d;--warn-soft:#3a2415;--up:#ff6b5e;--down:#3ccf8e;--new:#a98bff;--new-soft:#2a2045}
+}
+:root[data-theme="dark"]{--bg:#0e131c;--card:#171e2b;--text:#e8edf5;--sub:#93a0b4;--line:#283244;--pri:#6b8cff;--pri-soft:#1c2845;--warn:#ff8a3d;--warn-soft:#3a2415;--up:#ff6b5e;--down:#3ccf8e;--new:#a98bff;--new-soft:#2a2045}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;font-size:14px;line-height:1.5}
+header{background:var(--pri);color:#fff;padding:14px 20px}
+header b{font-size:18px}
+header span{opacity:.85;margin-left:10px;font-size:13px}
+.proto{background:var(--new-soft);color:var(--new);padding:8px 20px;font-size:12px;border-bottom:1px solid var(--line)}
+.wrap{display:grid;grid-template-columns:280px 1fr;gap:16px;max-width:1100px;margin:0 auto;padding:16px}
+@media(max-width:760px){.wrap{grid-template-columns:1fr}}
+aside{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--line);align-self:start}
+aside h4{margin:0 0 8px;font-size:14px}
+.grp{padding:12px 0;border-bottom:1px solid var(--line)}
+.grp:last-child{border:0}
+.grp.new{background:var(--new-soft);margin:0 -8px;padding:12px 8px;border-radius:10px;border:1px solid var(--new)}
+.tag{background:var(--new);color:#fff;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:6px;vertical-align:middle}
+label.ck{display:flex;align-items:flex-start;gap:8px;padding:5px 0;cursor:pointer}
+label.ck input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--pri);flex:none}
+label.ck .p{margin-left:auto;color:var(--sub);white-space:nowrap;font-size:12px}
+label.ck small{display:block;color:var(--sub);font-size:11px}
+.grp.new label.ck input{accent-color:var(--new)}
+.bar{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.bar .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--sub);padding:6px 12px;font:inherit;cursor:pointer}
+.seg button.on{background:var(--pri);color:#fff}
+.chip{display:inline-block;background:var(--pri-soft);color:var(--pri);border-radius:12px;padding:2px 10px;font-size:12px;margin:6px 6px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.top{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.air{width:130px;font-weight:600}
+.air small{display:block;color:var(--sub);font-weight:400}
+.time{flex:1;min-width:200px;display:flex;align-items:center;gap:10px}
+.time .t{font-size:17px;font-weight:600}
+.time .ln{flex:1;border-top:1px solid var(--line);text-align:center;font-size:11px;color:var(--sub);position:relative;top:-2px;padding-top:2px}
+.price{text-align:right;min-width:150px}
+.price .old{color:var(--sub);font-size:12px;text-decoration:line-through}
+.price .fin{font-size:21px;font-weight:700;color:var(--warn)}
+.price .lb{font-size:11px;color:var(--sub)}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;background:var(--line);color:var(--sub);margin-top:4px}
+.badge.up{background:var(--warn-soft);color:var(--up)}
+.badge.dn{background:var(--pri-soft);color:var(--down)}
+details{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+summary{cursor:pointer;color:var(--pri);font-size:13px}
+.bd{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.bd td{padding:4px 0}
+.bd td:last-child{text-align:right}
+.bd tr.sum td{border-top:1px solid var(--line);font-weight:700;padding-top:8px}
+.bd .ex{color:var(--sub)}
+.empty{text-align:center;color:var(--sub);padding:40px}
+.note{color:var(--sub);font-size:11px;margin:14px 0}
+</style>
+</head>
+<body>
+<header><b>인천 ICN ⇄ 상하이 SHA/PVG</b><span>10.05(월) – 10.07(수) · 성인 1 · 일반석 · 왕복</span></header>
+<div class="proto">🧪 시제품 목업 — 보라색 영역이 이번에 추가한 “최종가 사전 체크” 필터입니다. 요금은 데모용 가상 데이터입니다.</div>
+
+<div class="wrap">
+<aside>
+  <div class="grp new">
+    <h4>내 여행 조건으로 최종가 보기<span class="tag">NEW</span></h4>
+    <label class="ck"><input type="checkbox" id="cancel"><span>무료취소·무료변경 서비스 이용<small>취소/변경 수수료 면제 서비스 비용 반영</small></span></label>
+    <label class="ck"><input type="checkbox" id="pickup"><span>공항 픽업 서비스<small>상하이 공항 → 시내 편도</small></span></label>
+    <label class="ck"><input type="checkbox" id="insurance"><span>여행자보험 가입<small>항공권과 함께 가입 시 보험료 반영</small></span></label>
+    <div style="font-size:12px;font-weight:600;margin:8px 0 2px;color:var(--new)">위탁수하물 <span style="font-weight:400;color:var(--sub)">(15·20·28kg는 택1)</span></div>
+    <label class="ck"><input type="checkbox" id="b15"><span>위탁수하물 15kg</span></label>
+    <label class="ck"><input type="checkbox" id="b20"><span>위탁수하물 20kg</span></label>
+    <label class="ck"><input type="checkbox" id="b28"><span>위탁수하물 28kg</span></label>
+    <label class="ck"><input type="checkbox" id="bx"><span>위탁수하물 1개 추가<small>선택한 무게와 별도로 1개 더</small></span></label>
+    <div style="height:6px"></div>
+    <label class="ck"><input type="checkbox" id="change"><span>여행 일정 변경 가능성 있음<small>무료변경 미선택 시 항공사별 변경 수수료를 예상 비용으로 반영</small></span></label>
+  </div>
+  <div class="grp">
+    <h4>추천</h4>
+    <label class="ck"><input type="checkbox" id="direct"><span>직항</span></label>
+    <label class="ck"><input type="checkbox" disabled><span>위탁 수하물 포함</span></label>
+    <label class="ck"><input type="checkbox" disabled><span>휴대 수하물 포함</span></label>
+  </div>
+  <div class="grp"><h4>항공사</h4><div id="airlines"></div></div>
+  <div class="grp"><h4>좌석 등급</h4><label class="ck"><input type="radio" checked><span>일반석</span></label></div>
+</aside>
+
+<main>
+  <div class="bar">
+    <div class="row">
+      <div><b id="cnt"></b></div>
+      <div class="seg" id="sort"><button data-s="final" class="on">최종가 기준</button><button data-s="base">최초가 기준</button></div>
+    </div>
+    <div id="chips"></div>
+  </div>
+  <div id="list"></div>
+  <p class="note">※ 최초가 = 목록에 처음 노출되는 항공운임. 최종가 = 최초가 + 결제·발권 수수료 + 선택한 옵션 비용. 옵션 가격과 수수료는 시제품용 임의 값입니다.</p>
+</main>
+</div>
+
+<script>
+var F=[
+ {id:1,a:"중국남방항공",c:"CZ",dep:"07:25",arr:"08:55",dur:"1시간 30분",via:"직항",base:467500,fee:18000,cancel:42000,pickup:35000,ins:12000,pen:120000,b15:20000,b20:30000,b28:50000,bx:40000},
+ {id:2,a:"하문항공",c:"MF",dep:"09:10",arr:"10:35",dur:"1시간 25분",via:"직항",base:500900,fee:12000,cancel:28000,pickup:35000,ins:12000,pen:70000,b15:15000,b20:25000,b28:40000,bx:35000},
+ {id:3,a:"중국동방항공",c:"MU",dep:"10:40",arr:"12:05",dur:"1시간 25분",via:"직항",base:546000,fee:9000,cancel:20000,pickup:35000,ins:12000,pen:80000,b15:0,b20:12000,b28:35000,bx:30000},
+ {id:4,a:"상하이항공",c:"FM",dep:"13:00",arr:"14:25",dur:"1시간 25분",via:"직항",base:553700,fee:0,cancel:15000,pickup:35000,ins:12000,pen:55000,b15:0,b20:10000,b28:30000,bx:30000},
+ {id:5,a:"캐세이퍼시픽항공",c:"CX",dep:"08:05",arr:"13:40",dur:"5시간 35분",via:"홍콩 경유 1회",base:628700,fee:0,cancel:0,pickup:35000,ins:12000,pen:0,b15:0,b20:0,b28:20000,bx:25000}
+];
+var S={cancel:false,pickup:false,insurance:false,change:false,b15:false,b20:false,b28:false,bx:false,direct:false,sort:"final",air:{}};
+F.forEach(function(f){S.air[f.id]=false});
+var won=function(n){return n.toLocaleString("ko-KR")+"원"};
+
+function calc(f){
+  var r=[["항공운임 (최초가)",f.base,""]];
+  if(f.fee) r.push(["결제·발권 수수료 (결제 단계에서 추가)",f.fee,""]);
+  if(S.cancel) r.push(["무료취소·무료변경 서비스",f.cancel,f.cancel?"":"기본 포함"]);
+  if(S.pickup) r.push(["공항 픽업",f.pickup,""]);
+  if(S.insurance) r.push(["여행자보험",f.ins,""]);
+  var bn={b15:"15kg",b20:"20kg",b28:"28kg"};
+  Object.keys(bn).forEach(function(k){if(S[k]) r.push(["위탁수하물 "+bn[k],f[k],f[k]?"":"기본 포함"])});
+  if(S.bx) r.push(["위탁수하물 1개 추가",f.bx,""]);
+  if(S.change&&!S.cancel) r.push(["예상 변경 수수료 (일정 변경 시)",f.pen,f.pen?"":"변경 무료"]);
+  var t=r.reduce(function(s,x){return s+x[1]},0);
+  return {rows:r,total:t};
+}
+function rank(arr,key){var s=arr.slice().sort(function(a,b){return a[key]-b[key]});var m={};s.forEach(function(x,i){m[x.id]=i+1});return m}
+
+function render(){
+  var anyAir=Object.keys(S.air).some(function(k){return S.air[k]});
+  var v=F.filter(function(f){return (!S.direct||f.via==="직항")&&(!anyAir||S.air[f.id])})
+   .map(function(f){var c=calc(f);return {f:f,id:f.id,base:f.base,total:c.total,rows:c.rows}});
+  var rb=rank(v,"base"),rt=rank(v,"total");
+  v.sort(function(a,b){return S.sort==="final"?a.total-b.total:a.base-b.base});
+  document.getElementById("cnt").textContent="검색 결과 "+v.length+"건";
+  var ch=[];
+  if(S.cancel)ch.push("무료취소·변경");if(S.pickup)ch.push("공항 픽업");
+  if(S.insurance)ch.push("여행자보험");if(S.b15)ch.push("수하물 15kg");if(S.b20)ch.push("수하물 20kg");if(S.b28)ch.push("수하물 28kg");if(S.bx)ch.push("수하물 1개 추가");if(S.change)ch.push("변경 가능성 있음");
+  document.getElementById("chips").innerHTML=ch.length?ch.map(function(x){return '<span class="chip">'+x+'</span>'}).join(""):'<span style="color:var(--sub);font-size:12px">왼쪽에서 내 조건을 체크하면 최종 결제 예상가로 다시 비교됩니다.</span>';
+  if(!v.length){document.getElementById("list").innerHTML='<div class="empty">조건에 맞는 항공편이 없습니다.</div>';return}
+  document.getElementById("list").innerHTML=v.map(function(o){
+    var f=o.f,diff=o.total-o.base,d=rt[o.id]-rb[o.id];
+    var bd=d>0?'<span class="badge up">최초가 '+rb[o.id]+'위 → 최종가 '+rt[o.id]+'위 ▼</span>':d<0?'<span class="badge dn">최초가 '+rb[o.id]+'위 → 최종가 '+rt[o.id]+'위 ▲</span>':'<span class="badge">순위 변동 없음 ('+rt[o.id]+'위)</span>';
+    var rows=o.rows.map(function(x){return '<tr><td>'+x[0]+'</td><td class="'+(x[2]?'ex':'')+'">'+(x[2]||('+'+won(x[1])).replace("++","+"))+'</td></tr>'}).join("").replace('<td>항공운임 (최초가)</td><td class="">+','<td>항공운임 (최초가)</td><td class="">');
+    return '<div class="card"><div class="top">'+
+      '<div class="air">'+f.a+'<small>'+f.c+' · '+f.via+'</small></div>'+
+      '<div class="time"><span class="t">'+f.dep+'</span><span class="ln">'+f.dur+'</span><span class="t">'+f.arr+'</span></div>'+
+      '<div class="price"><div class="old">최초가 '+won(o.base)+'</div><div class="fin">'+won(o.total)+'</div><div class="lb">최종 예상 결제가 '+(diff?'(+'+won(diff)+')':'')+'</div>'+bd+'</div></div>'+
+      '<details><summary>가격 상세 보기</summary><table class="bd">'+rows+'<tr class="sum"><td>최종 예상 결제가</td><td>'+won(o.total)+'</td></tr></table></details></div>';
+  }).join("");
+}
+
+document.getElementById("airlines").innerHTML=F.map(function(f){
+  return '<label class="ck"><input type="checkbox" data-a="'+f.id+'"><span>'+f.a+'</span><span class="p">'+won(f.base)+'</span></label>'}).join("");
+var BG=["b15","b20","b28"];
+["cancel","pickup","insurance","b15","b20","b28","bx","change","direct"].forEach(function(k){
+  document.getElementById(k).addEventListener("change",function(e){
+    S[k]=e.target.checked;
+    if(e.target.checked&&BG.indexOf(k)>-1)BG.forEach(function(o){if(o!==k){S[o]=false;document.getElementById(o).checked=false}});
+    render()})});
+document.querySelectorAll("[data-a]").forEach(function(el){
+  el.addEventListener("change",function(e){S.air[el.dataset.a]=e.target.checked;render()})});
+document.querySelectorAll("#sort button").forEach(function(b){
+  b.addEventListener("click",function(){S.sort=b.dataset.s;document.querySelectorAll("#sort button").forEach(function(x){x.classList.toggle("on",x===b)});render()})});
+render();
+</script>
+</body>
+</html>
